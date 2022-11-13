@@ -16,11 +16,11 @@ const App = () => {
 
     //storing notes in an array
     const [notes, setNotes] = useState([
-        {
-             id: nanoid(),
-           text: "This is my third note",
-             date: "5/11/2022",
-         },
+        // {
+        //      id: nanoid(),
+        //    text: "This is my third note",
+        //      date: "5/11/2022",
+        //  },
     ]);
 
 
