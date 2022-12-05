@@ -1,0 +1,113 @@
+%%=ContentBlockByID(Lookup("CZ_MOL_ScriptsList", "ID", "Key", "get-variables"))=%%Dobrý den %%=v(@salutation)=%% čeká na Vás atraktivní odměna na uvítanou. Vyberte si ji právě teď. %%[set @url2 = Lookup("CZ_MOL_Inbox_URLs","URL","ContactKey",_subscriberKey,"Key","MigrationJourneyTier1")]%%
+
+
+%%=ContentBlockByID(Lookup("CZ_MOL_ScriptsList", "ID", "Key", "get-variables"))=%%Dobrý den,%%=v(@pushSalutation)=%% čeká na Vás atraktivní odměna na uvítanou. Vyberte si ji právě teď. %%[set @url2 = Lookup("CZ_MOL_Inbox_URLs","URL","ContactKey",_subscriberKey,"Key","MigrationJourneyTier1")]%%
+
+
+%%=ContentBlockByID(Lookup("CZ_MOL_ScriptsList", "ID", "Key", "get-variables"))=%%Dobrý den,%%=v(@pushSalutation)=%% čeká na Vás atraktivní odměna na uvítanou v SILVER úrovni. Vyberte si ji právě teď.%%[set @url2 = Lookup("CZ_MOL_Inbox_URLs","URL","ContactKey",_subscriberKey,"Key","MigrationJourneyTier2")]%%
+
+
+%%=ContentBlockByID(Lookup("CZ_MOL_ScriptsList", "ID", "Key", "get-variables"))=%%Dobrý den,%%=v(@postSalutation)=%% čeká na Vás atraktivní odměna na uvítanou v GOLD úrovni. Vyberte si ji právě teď.%%[set @url2 = Lookup("CZ_MOL_Inbox_URLs","URL","ContactKey",_subscriberKey,"Key","MigrationJourneyTier3")]%%
+
+%%=ContentBlockByID(Lookup("CZ_MOL_ScriptsList", "ID", "Key", "get-variables"))=%%Dobrý den,%%=v(@pushSalutation)=%% čeká na Vás atraktivní odměna na uvítanou ve VIP úrovni. Vyberte si ji právě teď.%%[set @url2 = Lookup("CZ_MOL_Inbox_URLs","URL","ContactKey",_subscriberKey,"Key","MigrationJourneyTier4")]%%
+
+
+
+%%=ContentBlockByID(Lookup("HU_MOL_ScriptsList", "ID", "Key", "get-variables"))=%%Dobrý den,%%=v(@pushSalutation)=%% ochutnejte naše Hot Dogy dle svého výběru a získejte 50% slevu na Hot Dog.%%[set @url2 = CloudPagesURL(Lookup("HU_MOL_CloudPagesList","ID","Key","app-show-inbox-message"),"Key","HotDog")]%%
+
+
+CZ-MOlL-HotDog-Inbox
+
+HotDog
+
+178043
+
+Zapojte se do naší výzvy ➡️🌭
+
+
+%%=ContentBlockByID(Lookup("CZ_MOL_ScriptsList", "ID", "Key", "get-variables"))=%%Kupte si 2x Hot Dog dle svého výběru a získejte 50% slevu na další. Více v aplikaci.%%[set @url2 = CloudPagesURL(Lookup("CZ_MOL_CloudPagesList","ID","Key","app-show-inbox-message"),"Key","HotDog")]%%
+
+Hot Dog s 50% slevou 🌭
+
+
+
+
+%%[ set @CampaignID = Lookup(@CampaignIdList, "ID", "Key", "LoyaltyGame-HotDog") ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "coupon-distribution")) ]%%
+%%=ContentBlockbyID("178784")=%%
+
+
+//s tymto funguje ale prida 2 a prida do emaily free hotdog
+
+%%[ set @CouponDefinition = Lookup(@CouponIdList, "ID", "Key", "LoyaltyGame-HotDog") set @CampaignID = Lookup(@CampaignIdList, "ID", "Key", "LoyaltyGame-HotDog") ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "generate-coupon-in-message")) ]%%
+%%=ContentBlockbyID("52373")=%%
+
+
+%%[ set @CouponDefinition = Lookup(@CouponIdList, "ID", "Key", "LoyaltyGame-CollectCoffee") set @CampaignID = Lookup(@CampaignIdList, "ID", "Key", "LoyaltyGame-CollectCoffeeChallenge") ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "generate-coupon-in-message")) ]%%
+%%=ContentBlockbyID("178784")=%%
+
+
+
+//ta co bola najskor
+
+set @CampaignID = Lookup(@CampaignIdList, "ID", "Key", "LoyaltyGame-HotDog") 
+ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "coupon-distribution"))
+
+
+ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "coupon-distribution"))
+
+
+
+
+set @CampaignID = Lookup(@CampaignIdList, "ID", "Key", "LoyaltyGame-HotDog") 
+ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "coupon-distribution"))
+ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "generate-coupon-in-message"))
+
+
+
+set @CampaignID = Lookup(@CampaignIdList, "ID", "Key", "LoyaltyGame-HotDog") 
+ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "generate-coupon-in-message"))
+
+
+%%[ ContentBlockByID(Lookup(@ScriptsList, "ID", "Key", "coupon-distribution")) ]%%
+
+
+<script runat="server">
+    Platform.Load("Core","1");
+    try {
+    </script>
+    %%[
+      set @CouponId                 = Voucher:Id
+      set @CouponNumber             = Voucher:VoucherCode
+      set @Validity_Start_Date__c   = Voucher:EffectiveDate
+      set @Validity_End_Date__c     = Voucher:ExpirationDate
+      set @ImageURL                 = Voucher:VoucherDefinition:Image_URL__c
+      set @CouponTitle              = Voucher:VoucherDefinition:Local_Title__c
+      set @Local_Description__c     = Voucher:VoucherDefinition:Local_Description__c
+      set @couponDisclaimer         = Voucher:VoucherDefinition:Disclaimer_Reusability_of_voucher__c
+      set @Reusability__c           = Voucher:VoucherDefinition:Reusability__c
+      set @CouponDefinitionId       = Voucher:VoucherDefinition:Id
+      set @couponDetailURL          = Concat(Lookup(@LinksList, "URL", "Key", "loyalty-couponpage"), "?voucherId=", @CouponId)
+      /* Get latest coupon data */
+      set @rowset = RetrieveSalesforceObjects('Voucher', 'Status__c, Usages_Left__c', 'Id', '=', @CouponId)
+      set @row = Row(@rowset, 1)
+      set @CouponStatus = Field(@row, "Status__c")
+      set @Usages_Left__c = IIF(EMPTY(Field(@row, "Usages_Left__c")), 0, FormatNumber(Field(@row, "Usages_Left__c"), "N0"))
+      /* Check if coupon was not used meanwhile so it is not rewritten wrongly from 'Used' to 'Distributed' */
+      IF (_messagecontext == 'SEND' AND @CouponStatus != "Used" AND @CouponStatus != "Distributed") THEN
+        UpdateSingleSalesforceObject('Voucher', @CouponId, 'Status__c', "Distributed")
+      ENDIF
+    ]%%
+    <script runat="server">
+        } catch(e) {
+            function ampScript(code) {
+                var ampBlock = '\%\%[' + code + ']\%\%';
+                Platform.Function.TreatAsContent(ampBlock);
+            }
+            Write(Stringify(e));
+            var errorType = e.message;
+            var errorMessage = Stringify(e);
+            Variable.SetValue("@ErrorType", errorType);
+            Variable.SetValue("@ErrorMessage", errorMessage);
+            ampScript("InsertDE('CouponGenerationErrorLog', 'ContactKey', AttributeValue('_subscriberkey'), 'TimeStamp', SystemDateToLocalDate(Now()), 'GUID', GUID(), 'ErrorType', @ErrorType, 'ErrorMessage', @ErrorMessage)");
+        }
+    </script>
