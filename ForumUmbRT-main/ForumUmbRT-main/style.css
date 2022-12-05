@@ -20,10 +20,9 @@ h1 {
 }
 
 .input {
-    position: relative;
-    top: 450px;
-    left: 10px;
-
+    position: fixed;
+    top: 600px;
+    left: 560px;
 }
 
 
@@ -40,14 +39,14 @@ h1 {
 }
 
 .sort {
-    position: relative;
-    left: 610px;
-    top: 408px;
+    position: fixed;
+    right: 580px;
+    top: 620px;
 }
 
 .usporiadanie {
-    position: relative;
-    left: 610px;
-    top: 408px;
+    position: fixed;
+    right: 680px;
+    top: 620px;
     
 }
