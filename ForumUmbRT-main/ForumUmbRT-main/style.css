@@ -20,33 +20,20 @@ h1 {
 }
 
 .input {
-    position: fixed;
-    top: 600px;
-    left: 560px;
-}
+    position:sticky;
+    display: flex;
+    top: 800px;
 
-
-.user {
-    position: relative;
-    top: 428px;
-    left: 10px;
 }
 
 .button {
-    position: relative;
-    left: 350px;
+    position: sticky;
+    left: 370px;
     bottom: 21px;
 }
 
-.sort {
-    position: fixed;
-    right: 580px;
-    top: 620px;
+.sort-posts {
+    position: sticky;
+    top: 400px;
 }
 
-.usporiadanie {
-    position: fixed;
-    right: 680px;
-    top: 620px;
-    
-}
