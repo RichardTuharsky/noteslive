@@ -13,7 +13,10 @@ document.querySelector('form button').addEventListener('click', function(event) 
   myActivities.push(newActivity);
   console.log(myActivities);
   event.preventDefault();
+  document.getElementById("posts").innerHTML = myActivities;
 
 },false);
+
+
 
 
