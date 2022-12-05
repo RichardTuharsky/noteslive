@@ -1,3 +1,5 @@
+
+//funkcia na pridavanie
 var myActivities = [];
 
 document.querySelector('form button').addEventListener('click', function(event) {
@@ -12,4 +14,6 @@ document.querySelector('form button').addEventListener('click', function(event) 
   console.log(myActivities);
   event.preventDefault();
 
-}, false);
+},false);
+
+
